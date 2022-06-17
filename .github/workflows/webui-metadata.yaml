@@ -1,4 +1,4 @@
-name: WebUI Action
+name: RPT Action
 
 on:
     workflow_dispatch:
@@ -23,10 +23,10 @@ jobs:
 
     WebUI-Action:
         runs-on: self-hosted
-        name: Execute WebUI Test
+        name: Execute RPT Test
         steps:
          - name: Execute Test
-           uses: SonaHJ/WebUIAction@main
+           uses: SonaHJ/RPTAction@main
            with:
             productpath: '${{ github.event.inputs.productpath }}'
             imshared: '${{ github.event.inputs.imshared }}'
