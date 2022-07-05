@@ -22,9 +22,8 @@ const main = async () => {
         const swapdatasets = core.getInput('swapdatasets', { required: false });
         const configfile = core.getInput('configfile', { required: false });
         const results = core.getInput('results', { required: false });
-        const overwrite = core.getInput('overwrite', { required: false });
 
-
+        var overwrite;
         var exportstats;
         var exportstatreportlist;
         var exportstatshtml;
@@ -38,47 +37,52 @@ const main = async () => {
         var publishreports;
 
         const multipleValues = core.getInput('multipleValues', { required: false });
-        var mult_value = multipleValues.split(';');
-
-        for (var i = 0; i < mult_value.length; i++) {
-            var value = mult_value[i].split(':');
-            if (value.length != 2) {
-                throw new Error(
-                    "Please enter input in keyvalue format seperated by ':'"
-                );
-            } else if (isEmptyOrSpaces(value[0])) {
-                throw new Error(
-                    "Input key is not given"
-                );
-            } else if (isEmptyOrSpaces(value[1])) {
-                throw new Error(
-                    "Input key value is not given"
-                );
-            }
-            if (value[0] == 'exportstats') {
-                exportstats = value[1];
-            } else if (value[0] == 'exportstatreportlist') {
-                exportstatreportlist = value[1];
-            } else if (value[0] == 'exportstatshtml') {
-                exportstatshtml = value[1];
-            } else if (value[0] == 'usercomments') {
-                usercomments = value[1];
-            } else if (value[0] == 'protocolinput') {
-                protocolinput = value[1];
-            } else if (value[0] == 'exportreport') {
-                exportreport = value[1];
-            } else if (value[0] == 'imports') {
-                imports = value[1];
-            } else if (value[0] == 'exportstatsformat') {
-                exportstatsformat = value[1];
-            } else if (value[0] == 'publish') {
-                publish = value[1];
-            } else if (value[0] == 'publish_for') {
-                publish_for = value[1];
-            } else if (value[0] == 'publishreports') {
-                publishreports = value[1];
+        if(multipleValues!==null){
+            var mult_value = multipleValues.split(';');
+            console.log("Multiplevalue : "+mult_value.length)
+            for (var i = 0; i < mult_value.length; i++) {
+                var value = mult_value[i].split(':');
+                if (value.length != 2) {
+                    throw new Error(
+                        "Please enter input in keyvalue format seperated by ':'"
+                    );
+                } else if (isEmptyOrSpaces(value[0])) {
+                    throw new Error(
+                        "Input key is not given"
+                    );
+                } else if (isEmptyOrSpaces(value[1])) {
+                    throw new Error(
+                        "Input key value is not given"
+                    );
+                }
+                if (value[0] == 'exportstats') {
+                    exportstats = value[1];
+                } else if (value[0] == 'exportstatreportlist') {
+                    exportstatreportlist = value[1];
+                } else if (value[0] == 'exportstatshtml') {
+                    exportstatshtml = value[1];
+                } else if (value[0] == 'usercomments') {
+                    usercomments = value[1];
+                } else if (value[0] == 'protocolinput') {
+                    protocolinput = value[1];
+                } else if (value[0] == 'exportreport') {
+                    exportreport = value[1];
+                } else if (value[0] == 'imports') {
+                    imports = value[1];
+                } else if (value[0] == 'exportstatsformat') {
+                    exportstatsformat = value[1];
+                } else if (value[0] == 'publish') {
+                    publish = value[1];
+                } else if (value[0] == 'publish_for') {
+                    publish_for = value[1];
+                } else if (value[0] == 'publishreports') {
+                    publishreports = value[1];
+                } else if (value[0] == 'overwrite') {
+                    overwrite = value[1];
+                }
             }
         }
+        
 
         console.log("productpath ===" + productpath);
         console.log("imshared ===" + imshared);
