@@ -36,7 +36,7 @@ const main = async () => {
         var publish_for;
         var publishreports;
 
-        const multipleValues = core.getInput('multipleValues', { required: false });
+        var multipleValues = core.getInput('multipleValues', { required: false });
         if(multipleValues!==null){
             var mult_value = multipleValues.split(';');
             console.log("Multiplevalue : "+mult_value.length)
