@@ -13,7 +13,6 @@ const main = async () => {
          **/
 
         const productpath = getProductPath();
-        const projectdir = core.getInput('projectdir', { required: false });
         var imshared = core.getInput('imshared', { required: false });
         const workspace = core.getInput('workspace', { required: false });
         const project = core.getInput('project', { required: false });
@@ -24,19 +23,65 @@ const main = async () => {
         const configfile = core.getInput('configfile', { required: false });
         const results = core.getInput('results', { required: false });
         const overwrite = core.getInput('overwrite', { required: false });
-        const exportstats = core.getInput('exportstats', { required: false });
-        const exportstatreportlist = core.getInput('exportstatreportlist', { required: false });
-        const exportstatshtml = core.getInput('exportstatshtml', { required: false });
-        const usercomments = core.getInput('usercomments', { required: false });
-        const protocolinput = core.getInput('protocolinput', { required: false });
-        const exportreport = core.getInput('exportreport', { required: false });
-        const imports = core.getInput('imports', { imports: false });
-        const exportstatsformat = core.getInput('exportstatsformat', { required: false });
-        const publish = core.getInput('publish', { required: false });
-        const publish_for = core.getInput('publish_for', { required: false });
-        const publishreports = core.getInput('publishreports', { required: false });
-        console.log("productpath ==="+productpath);
-        console.log("imshared ==="+imshared);
+
+
+        var exportstats;
+        var exportstatreportlist;
+        var exportstatshtml;
+        var usercomments;
+        var protocolinput;
+        var exportreport;
+        var imports;
+        var exportstatsformat;
+        var publish;
+        var publish_for;
+        var publishreports;
+
+        const multipleValues = core.getInput('multipleValues', { required: false });
+        var mult_value = multipleValues.split(';');
+
+        for (var i = 0; i < mult_value.length; i++) {
+            var value = mult_value[i].split(':');
+            if (value.length != 2) {
+                throw new Error(
+                    "Please enter input in keyvalue format seperated by ':'"
+                );
+            } else if (isEmptyOrSpaces(value[0])) {
+                throw new Error(
+                    "Input key is not given"
+                );
+            } else if (isEmptyOrSpaces(value[1])) {
+                throw new Error(
+                    "Input key value is not given"
+                );
+            }
+            if (value[0] == 'exportstats') {
+                exportstats = value[1];
+            } else if (value[0] == 'exportstatreportlist') {
+                exportstatreportlist = value[1];
+            } else if (value[0] == 'exportstatshtml') {
+                exportstatshtml = value[1];
+            } else if (value[0] == 'usercomments') {
+                usercomments = value[1];
+            } else if (value[0] == 'protocolinput') {
+                protocolinput = value[1];
+            } else if (value[0] == 'exportreport') {
+                exportreport = value[1];
+            } else if (value[0] == 'imports') {
+                imports = value[1];
+            } else if (value[0] == 'exportstatsformat') {
+                exportstatsformat = value[1];
+            } else if (value[0] == 'publish') {
+                publish = value[1];
+            } else if (value[0] == 'publish_for') {
+                publish_for = value[1];
+            } else if (value[0] == 'publishreports') {
+                publishreports = value[1];
+            }
+        }
+
+        console.log("productpath ===" + productpath);
+        console.log("imshared ===" + imshared);
         if (!imshared) {
             console.log("Inside if");
             imshared = getImsharedLoc(productpath);
