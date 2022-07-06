@@ -43,6 +43,7 @@ const main = async () => {
             console.log("Multiplevalue : " + mult_value.length);
             for (var i = 0; i < mult_value.length; i++) {
                 var value = mult_value[i].split(':');
+                console.log("value : " + value.length);
                 if (value.length != 2) {
                     throw new Error(
                         "Please enter input in keyvalue format seperated by ':'"
