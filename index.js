@@ -271,7 +271,7 @@ const main = async () => {
 }
 
 function isEmptyOrSpaces(dataset) {
-    return dataset === null || dataset.match(/^ *$/) !== null;
+    return !(dataset === null || dataset.match(/^ *$/) !== null);
 }
 
 function getProductPath() {
