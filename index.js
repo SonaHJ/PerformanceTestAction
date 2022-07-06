@@ -37,10 +37,10 @@ const main = async () => {
         var publishreports;
 
         const multipleValues = core.getInput('multipleValues', { required: false });
-        console.log("Nullheck : "+isEmptyOrSpaces(multipleValues));
-        if(isEmptyOrSpaces(multipleValues)){
+        console.log("Nullheck : " + isEmptyOrSpaces(multipleValues));
+        if (isEmptyOrSpaces(multipleValues)) {
             var mult_value = multipleValues.split(';');
-            console.log("Multiplevalue : "+mult_value.length);
+            console.log("Multiplevalue : " + mult_value.length);
             for (var i = 0; i < mult_value.length; i++) {
                 var value = mult_value[i].split(':');
                 if (value.length != 2) {
@@ -83,7 +83,7 @@ const main = async () => {
                 }
             }
         }
-        
+
 
         console.log("productpath ===" + productpath);
         console.log("imshared ===" + imshared);
@@ -268,6 +268,10 @@ const main = async () => {
     catch (error) {
         core.setFailed(error.message);
     }
+}
+
+function isEmptyOrSpaces(dataset) {
+    return dataset === null || dataset.match(/^ *$/) !== null;
 }
 
 function getProductPath() {
