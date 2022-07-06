@@ -18,6 +18,9 @@ on:
             suite:
                 description: 'Test Suite Name'
                 required: true
+            multipleValues:
+                description: 'Multiple Values'
+                required: true
 
 jobs:
 
@@ -33,3 +36,4 @@ jobs:
             workspace: '${{ github.event.inputs.workspace }}'
             project: '${{ github.event.inputs.project }}'
             suite: '${{ github.event.inputs.suite }}'
+            multipleValues: '${{ github.event.inputs.multipleValues }}'
