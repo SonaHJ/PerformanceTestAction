@@ -48,7 +48,7 @@ const main = async () => {
                     throw new Error(
                         "Please enter input in keyvalue format seperated by '='"
                     );
-                } else if (TestTest(value[0])) {
+                } else if (isEmptyOrSpaces(value[0])) {
                     throw new Error(
                         "Input key is not given"
                     );
