@@ -38,7 +38,7 @@ const main = async () => {
 
         const multipleValues = core.getInput('multipleValues', { required: false });
         console.log("Nullheck : " + isEmptyOrSpaces(multipleValues));
-        if (isEmptyOrSpaces(multipleValues)) {
+        if (!isEmptyOrSpaces(multipleValues)) {
             var mult_value = multipleValues.split('|');
             console.log("Multiplevalue : " + mult_value.length);
             for (var i = 0; i < mult_value.length; i++) {
@@ -272,7 +272,7 @@ const main = async () => {
 }
 
 function isEmptyOrSpaces(dataset) {
-    return !(dataset === null || dataset.match(/^ *$/) !== null);
+    return dataset === null || dataset.match(/^ *$/) !== null;
 }
 
 function getProductPath() {
