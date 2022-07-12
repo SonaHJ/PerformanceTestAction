@@ -17,38 +17,39 @@ const main = async () => {
         const workspace = core.getInput('workspace', { required: false });
         const project = core.getInput('project', { required: false });
         const suite = core.getInput('suite', { required: false });
-        const labels = core.getInput('labels', { required: false });
-        const varfile = core.getInput('varfile', { required: false });
-        const swapdatasets = core.getInput('swapdatasets', { required: false });
-        const configfile = core.getInput('configfile', { required: false });
-        const results = core.getInput('results', { required: false });
 
-        var overwrite;
+        const configfile = core.getInput('configfile', { required: false });
+        const swapdatasets = core.getInput('swapdatasets', { required: false });
+        const duration = core.getInput('duration', false);
+        const exportlog = core.getInput('exportlog', false);
+        const exportreport = core.getInput('exportreport', false);
+        const multipleValues = core.getInput('multipleValues', { required: false });
+
         var exportstats;
-        var exportstatreportlist;
         var exportstatshtml;
-        var usercomments;
-        var protocolinput;
-        var exportreport;
-        var imports;
         var exportstatsformat;
+        var exportstatreportlist;
+        var reporthistory;
+        var labels;
+        var overwrite;
         var publish;
         var publish_for;
         var publishreports;
+        var rate;
+        var overridermlabels;
+        var results;
+        var users;
+        var usercomments;
+        var varfile;
+        var vmargs;
 
-        const multipleValues = core.getInput('multipleValues', { required: false });
         console.log("Nullheck : " + isEmptyOrSpaces(multipleValues));
         if (!isEmptyOrSpaces(multipleValues)) {
             var mult_value = multipleValues.split('|');
-            console.log("Multiplevalue : " + mult_value.length);
             for (var i = 0; i < mult_value.length; i++) {
                 var value = new Array(); 
                 value[0] = mult_value[i].toString().substring(0, mult_value[i].indexOf('='));
                 value[1] = mult_value[i].toString().substring(mult_value[i].indexOf('=')+1);
-                console.log("value[0] " + value[0]);
-                console.log("value[1] " + value[1]);
-                //var value = mult_value[i].split('=', 2);
-                console.log("value after = split: " + value.length);
                 if (value.length != 2) {
                     throw new Error(
                         "Please enter input in keyvalue format seperated by '='"
@@ -64,28 +65,40 @@ const main = async () => {
                 }
                 if (value[0] == 'exportstats') {
                     exportstats = value[1];
-                } else if (value[0] == 'exportstatreportlist') {
-                    exportstatreportlist = value[1];
                 } else if (value[0] == 'exportstatshtml') {
                     exportstatshtml = value[1];
-                } else if (value[0] == 'usercomments') {
-                    usercomments = value[1];
-                } else if (value[0] == 'protocolinput') {
-                    protocolinput = value[1];
-                } else if (value[0] == 'exportreport') {
-                    exportreport = value[1];
-                } else if (value[0] == 'imports') {
-                    imports = value[1];
                 } else if (value[0] == 'exportstatsformat') {
                     exportstatsformat = value[1];
+                } else if (value[0] == 'exportstatreportlist') {
+                    exportstatreportlist = value[1];
+                } else if (value[0] == 'reporthistory') {
+                    reporthistory = value[1];
+                } else if (value[0] == 'exportreport') {
+                    exportreport = value[1];
+                } else if (value[0] == 'labels') {
+                    labels = value[1];
+                } else if (value[0] == 'overwrite') {
+                    overwrite = value[1];
                 } else if (value[0] == 'publish') {
                     publish = value[1];
                 } else if (value[0] == 'publish_for') {
                     publish_for = value[1];
                 } else if (value[0] == 'publishreports') {
                     publishreports = value[1];
-                } else if (value[0] == 'overwrite') {
-                    overwrite = value[1];
+                } else if (value[0] == 'rate') {
+                    rate = value[1];
+                } else if (value[0] == 'overridermlabels') {
+                    overridermlabels = value[1];
+                }else if (value[0] == 'results') {
+                    results = value[1];
+                }else if (value[0] == 'users') {
+                    users = value[1];
+                }else if (value[0] == 'usercomments') {
+                    usercomments = value[1];
+                }else if (value[0] == 'varfile') {
+                    varfile = value[1];
+                }else if (value[0] == 'vmargs') {
+                    vmargs = value[1];
                 }
             }
         }
@@ -184,6 +197,9 @@ const main = async () => {
             if (publishreports) {
                 script = script.concat(' -publishreports ' + '"' + publishreports + '"')
             }
+            if (reporthistory) {
+                script = script.concat(' -history ' + '"' + reporthistory + '"')
+              }
         }
 
 
