@@ -43,10 +43,10 @@ const main = async () => {
             console.log("Multiplevalue : " + mult_value.length);
             for (var i = 0; i < mult_value.length; i++) {
                 var value = mult_value[i].split(/=(.*)/s);
-                console.log("value : " + value.length);
+                console.log("value after = split: " + value.length);
                 if (value.length != 2) {
                     throw new Error(
-                        "Please enter input in keyvalue format seperated by ':'"
+                        "Please enter input in keyvalue format seperated by '='"
                     );
                 } else if (TestTest(value[0])) {
                     throw new Error(
