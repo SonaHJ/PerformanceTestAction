@@ -42,7 +42,7 @@ const main = async () => {
             var mult_value = multipleValues.split('|');
             console.log("Multiplevalue : " + mult_value.length);
             for (var i = 0; i < mult_value.length; i++) {
-                var value = mult_value[i].split(/=(.*)/s);
+                var value = mult_value[i].split('=', 2);
                 console.log("value after = split: " + value.length);
                 if (value.length != 2) {
                     throw new Error(
