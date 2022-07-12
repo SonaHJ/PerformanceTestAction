@@ -39,10 +39,10 @@ const main = async () => {
         const multipleValues = core.getInput('multipleValues', { required: false });
         console.log("Nullheck : " + isEmptyOrSpaces(multipleValues));
         if (isEmptyOrSpaces(multipleValues)) {
-            var mult_value = multipleValues.split(';');
+            var mult_value = multipleValues.split('|');
             console.log("Multiplevalue : " + mult_value.length);
             for (var i = 0; i < mult_value.length; i++) {
-                var value = mult_value[i].split(':');
+                var value = mult_value[i].split(/=(.*)/s);
                 console.log("value : " + value.length);
                 if (value.length != 2) {
                     throw new Error(
