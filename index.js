@@ -102,12 +102,7 @@ const main = async () => {
                 }
             }
         }
-
-
-        console.log("productpath ===" + productpath);
-        console.log("imshared ===" + imshared);
         if (!imshared) {
-            console.log("Inside if");
             imshared = getImsharedLoc(productpath);
         }
         if (configfile) {
