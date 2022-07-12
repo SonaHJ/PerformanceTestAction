@@ -43,8 +43,8 @@ const main = async () => {
             console.log("Multiplevalue : " + mult_value.length);
             for (var i = 0; i < mult_value.length; i++) {
                 var value = new Array(); 
-                value[0] = mult_value.substring(0, mult_value.indexOf('='));
-                value[1] = mult_value.substring(mult_value.indexOf('=')+1);
+                value[0] = mult_value.toString().substring(0, mult_value.indexOf('='));
+                value[1] = mult_value.toString().substring(mult_value.indexOf('=')+1);
                 console.log("value[0] " + value[0]);
                 console.log("value[1] " + value[1]);
                 //var value = mult_value[i].split('=', 2);
