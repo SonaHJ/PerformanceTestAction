@@ -6,7 +6,7 @@ This action enables you to run HCL OneTest Performace tests.
 
 You can use the RPT Action that enables you to select any type of test created in HCL OneTest™ that you can add to the job in the GitHub action.
 
-## Pre requesits
+## Pre requisites
 
 1. Create a github repository
 2. Create a folder named ".github" in the root of the repository
@@ -46,10 +46,6 @@ To configure agent:
 
 ## Inputs
 
-### `imshared`
-
-Complete path to HCLIMShared location, if it is not at default location.
-
 ### `workspace`
 
 **Required** Complete path to Eclipse workspace.
@@ -61,6 +57,10 @@ Complete path to HCLIMShared location, if it is not at default location.
 ### `suite`
 
 **Required** Specify the relative path from the project to the test including the file name of the test. A test can be WebUI test, Compound test, Performance schedule or Accelerated Functional Test (AFT) suite. The test suite name must contain the file extension when it is an AFT suite. To run multiple tests from the same project sequentially, you must separate the tests by a colon (:). If you provide multiple tests, you cannot include an AFT suite along with it.
+
+### `imshared`
+
+Complete path to HCLIMShared location, if it is not at default location.
 
 ### `configfile`
 
