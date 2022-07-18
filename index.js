@@ -43,7 +43,6 @@ const main = async () => {
         var varfile;
         var vmargs;
 
-        console.log("Nullheck : " + isEmptyOrSpaces(multipleValues));
         if (!isEmptyOrSpaces(multipleValues)) {
             var mult_value = multipleValues.split('|');
             for (var i = 0; i < mult_value.length; i++) {
