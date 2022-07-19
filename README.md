@@ -1,10 +1,10 @@
-# RPT Action
+# HCL OneTest Performance
 
 This action enables you to run HCL OneTest Performace tests.
 
 ## How this works
 
-You can use the RPT Action that enables you to select any type of test created in HCL OneTest™ that you can add to the job in the GitHub action.
+You can use the HCL OneTest Performance Action that enables you to select any type of test created in HCL OneTest™ that you can add to the job in the GitHub action.
 
 ## Pre requisites
 
@@ -15,7 +15,7 @@ You can use the RPT Action that enables you to select any type of test created i
 ## Example usage
 
 ```yaml
-name: RPT Action
+name: HCL OneTest Performance
 
 on: workflow_dispatch
 
@@ -23,9 +23,9 @@ jobs:
 
     RPT-Action:
         runs-on: self-hosted
-        name: Execute RPT Test
+        name: HCL OneTest Performance
         steps:
-         - name: RPT Action
+         - name: HCL OneTest Performance
            uses: SonaHJ/RPTAction@RPT_Release
           with:
             workspace: D:\workspace_pt
