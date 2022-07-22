@@ -29,6 +29,24 @@ on:
             suite:
                 description: 'Test Suite Name'
                 required: true
+            imshared:
+                description: 'IMShared Path'
+                required: false
+            configfile:
+                description: 'Configfile'
+                required: false
+            swapdatasets:
+                description: 'Dataset Override'
+                required: false
+            duration:
+                description: 'Duration'
+                required: false
+            exportlog:
+                description: 'Exportlog'
+                required: false
+            exportstats:
+                description: 'Exportstats'
+                required: false
             multipleValues:
                 description: 'Multiple Values'
                 required: false
@@ -45,6 +63,12 @@ jobs:
             workspace: '${{ github.event.inputs.workspace }}'
             project: '${{ github.event.inputs.project }}'
             suite: '${{ github.event.inputs.suite }}'
+            imshared: '${{ github.event.inputs.imshared }}'
+            configfile: '${{ github.event.inputs.configfile }}'
+            swapdatasets: '${{ github.event.inputs.swapdatasets }}'
+            duration: '${{ github.event.inputs.duration }}'
+            exportlog: '${{ github.event.inputs.exportlog }}'
+            exportstats: '${{ github.event.inputs.exportstats }}'
             multipleValues: '${{ github.event.inputs.multipleValues }}'
 ```
 7. Replace the example input values with your details.
@@ -91,6 +115,10 @@ Optional. You can use this argument to specify the duration of the stages in the
 
 Optional. You can use this parameter to specify the file directory path to store the exported HTTP test log. You can provide multiple parameter entries when running multiple tests. You must use a colon to separate the parameter entries. For example: c:/logexport.txt:c:/secondlogexport.txt
 
+### `exportstats`
+
+The complete path to a directory in which to store exported statistical report data.
+
 ### `multipleValues`
 
 you may only define up to 10 inputs for a workflow_dispatch event. Remaining inputs need to be Key=Value pair.
@@ -103,10 +131,6 @@ Specify the below inputs in the Key=Value format.
 Ex: Key1=Value1|Key2=Value2
 
 ## Multiplevalue inputs
-
-### `exportstats`
-
-The complete path to a directory in which to store exported statistical report data.
 
 ### `exportstatshtml`
 The complete path to a directory in which to export web analytic results. The results are exported in the specified directory. Analyze the results on a web browser without using the test workbench.
