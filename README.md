@@ -58,7 +58,7 @@ jobs:
         name: HCL OneTest Performance
         steps:
          - name: HCL OneTest Performances
-           uses: SonaHJ/RPTAction@main
+           uses: SonaHJ/RPTAction@HCLOneTestPerformance_03
            with:
             workspace: '${{ github.event.inputs.workspace }}'
             project: '${{ github.event.inputs.project }}'
