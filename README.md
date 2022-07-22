@@ -128,7 +128,7 @@ https://github.community/t/you-may-only-define-up-to-10-inputs-for-a-workflow-di
 https://github.com/github/docs/issues/15710
 
 Specify the below inputs in the Key=Value format.
-Ex: Key1=Value1|Key2=Value2
+Ex: publish=publish_URL_val|usercomments=Value2
 
 ## Multiplevalue inputs
 
