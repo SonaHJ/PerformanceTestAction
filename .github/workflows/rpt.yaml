@@ -1,4 +1,4 @@
-name: RPT Action
+name:HCL OneTest Performance
 
 on:
     workflow_dispatch:
@@ -23,9 +23,9 @@ jobs:
 
     WebUI-Action:
         runs-on: self-hosted
-        name: Execute RPT Test
+        name: HCL OneTest Performance
         steps:
-         - name: Execute Test
+         - name: HCL OneTest Performances
            uses: SonaHJ/RPTAction@main
            with:
             imshared: '${{ github.event.inputs.imshared }}'
