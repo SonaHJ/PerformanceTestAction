@@ -1,4 +1,4 @@
-name:HCL OneTest Performance
+name: HCL OneTest Performance
 
 on:
     workflow_dispatch:
