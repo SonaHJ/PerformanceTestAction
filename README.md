@@ -17,21 +17,35 @@ You can use the HCL OneTest Performance Action that enables you to select any ty
 ```yaml
 name: HCL OneTest Performance
 
-on: workflow_dispatch
+on:
+    workflow_dispatch:
+        inputs:
+            workspace:
+                description: 'Workspace'
+                required: true
+            project:
+                description: 'Project'
+                required: true
+            suite:
+                description: 'Test Suite Name'
+                required: true
+            multipleValues:
+                description: 'Multiple Values'
+                required: false
 
 jobs:
 
-    RPT-Action:
+    WebUI-Action:
         runs-on: self-hosted
         name: HCL OneTest Performance
         steps:
-         - name: HCL OneTest Performance
-           uses: SonaHJ/RPTAction@RPT_Release
-          with:
-            workspace: D:\workspace_pt
-            project: Test
-            suite: Test
-            imshared: C:\Program Files\HCL\HCLIMShared\plugins
+         - name: HCL OneTest Performances
+           uses: SonaHJ/RPTAction@main
+           with:
+            workspace: '${{ github.event.inputs.workspace }}'
+            project: '${{ github.event.inputs.project }}'
+            suite: '${{ github.event.inputs.suite }}'
+            multipleValues: '${{ github.event.inputs.multipleValues }}'
 ```
 7. Replace the example input values with your details.
 8. Push it into the main branch
