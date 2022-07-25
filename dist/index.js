@@ -8871,6 +8871,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 const path = __nccwpck_require__(1017);
+const url = __nccwpck_require__(7310);
 
 const os = __nccwpck_require__(2037);
 const fs = __nccwpck_require__(7147);
@@ -8883,16 +8884,16 @@ const main = async () => {
          **/
 
         const productpath = getProductPath();
-        var imshared = core.getInput('imshared', { required: false });
+        var imshared = core.getInput('imShared', { required: false });
         const workspace = core.getInput('workspace', { required: false });
         const project = core.getInput('project', { required: false });
         const suite = core.getInput('suite', { required: false });
 
-        const configfile = core.getInput('configfile', { required: false });
-        const swapdatasets = core.getInput('swapdatasets', { required: false });
+        const configfile = core.getInput('configFile', { required: false });
+        const swapdatasets = core.getInput('swapDatasets', { required: false });
         const duration = core.getInput('duration', false);
-        const exportlog = core.getInput('exportlog', false);
-        const exportreport = core.getInput('exportreport', false);
+        const exportlog = core.getInput('exportLog', false);
+        const exportreport = core.getInput('exportReport', false);
         const multipleValues = core.getInput('multipleValues', { required: false });
 
         var exportstats;
@@ -8932,17 +8933,17 @@ const main = async () => {
                         "Input key value is not given"
                     );
                 }
-                if (value[0] == 'exportstats') {
+                if (value[0] == 'exportStats') {
                     exportstats = value[1];
-                } else if (value[0] == 'exportstatshtml') {
+                } else if (value[0] == 'exportStatsHtml') {
                     exportstatshtml = value[1];
-                } else if (value[0] == 'exportstatsformat') {
+                } else if (value[0] == 'exportStatsFormat') {
                     exportstatsformat = value[1];
-                } else if (value[0] == 'exportstatreportlist') {
+                } else if (value[0] == 'exportStatReportList') {
                     exportstatreportlist = value[1];
-                } else if (value[0] == 'reporthistory') {
+                } else if (value[0] == 'reportHistory') {
                     reporthistory = value[1];
-                } else if (value[0] == 'exportreport') {
+                } else if (value[0] == 'exportReport') {
                     exportreport = value[1];
                 } else if (value[0] == 'labels') {
                     labels = value[1];
@@ -8950,23 +8951,21 @@ const main = async () => {
                     overwrite = value[1];
                 } else if (value[0] == 'publish') {
                     publish = value[1];
-                } else if (value[0] == 'publish_for') {
+                } else if (value[0] == 'publishFor') {
                     publish_for = value[1];
-                } else if (value[0] == 'publishreports') {
+                } else if (value[0] == 'publishReports') {
                     publishreports = value[1];
                 } else if (value[0] == 'rate') {
                     rate = value[1];
-                } else if (value[0] == 'overridermlabels') {
-                    overridermlabels = value[1];
-                }else if (value[0] == 'results') {
+                } else if (value[0] == 'results') {
                     results = value[1];
                 }else if (value[0] == 'users') {
                     users = value[1];
-                }else if (value[0] == 'usercomments') {
+                }else if (value[0] == 'userComments') {
                     usercomments = value[1];
-                }else if (value[0] == 'varfile') {
+                }else if (value[0] == 'varFile') {
                     varfile = value[1];
-                }else if (value[0] == 'vmargs') {
+                }else if (value[0] == 'vmArgs') {
                     vmargs = value[1];
                 }
             }
