@@ -29,22 +29,22 @@ on:
             suite:
                 description: 'Test Suite Name'
                 required: true
-            imshared:
+            imShared:
                 description: 'IMShared Path'
                 required: false
-            configfile:
+            configFile:
                 description: 'Configfile'
                 required: false
-            swapdatasets:
+            swapDatasets:
                 description: 'Dataset Override'
                 required: false
             duration:
                 description: 'Duration'
                 required: false
-            exportlog:
+            exportLog:
                 description: 'Exportlog'
                 required: false
-            exportstats:
+            exportStats:
                 description: 'Exportstats'
                 required: false
             multipleValues:
@@ -58,17 +58,17 @@ jobs:
         name: HCL OneTest Performance
         steps:
          - name: HCL OneTest Performances
-           uses: SonaHJ/RPTAction@HCLOneTestPerformance_03
+           uses: SonaHJ/RPTAction@main
            with:
             workspace: '${{ github.event.inputs.workspace }}'
             project: '${{ github.event.inputs.project }}'
             suite: '${{ github.event.inputs.suite }}'
-            imshared: '${{ github.event.inputs.imshared }}'
-            configfile: '${{ github.event.inputs.configfile }}'
-            swapdatasets: '${{ github.event.inputs.swapdatasets }}'
+            imShared: '${{ github.event.inputs.imshared }}'
+            configFile: '${{ github.event.inputs.configFile }}'
+            swapDatasets: '${{ github.event.inputs.swapDatasets }}'
             duration: '${{ github.event.inputs.duration }}'
-            exportlog: '${{ github.event.inputs.exportlog }}'
-            exportstats: '${{ github.event.inputs.exportstats }}'
+            exportLog: '${{ github.event.inputs.exportLog }}'
+            exportStats: '${{ github.event.inputs.exportStats }}'
             multipleValues: '${{ github.event.inputs.multipleValues }}'
 ```
 7. Replace the example input values with your details.
@@ -95,29 +95,29 @@ To configure agent:
 
 **Required** Specify the relative path from the project to the test including the file name of the test. A test can be WebUI test, Compound test, Performance schedule or Accelerated Functional Test (AFT) suite. The test suite name must contain the file extension when it is an AFT suite. To run multiple tests from the same project sequentially, you must separate the tests by a colon (:). If you provide multiple tests, you cannot include an AFT suite along with it.
 
-### `imshared`
+### `imShared`
 
-Complete path to HCLIMShared location, if it is not at default location.
+**Optional** Complete path to HCLIMShared location, if it is not at default location.
 
-### `configfile`
+### `configFile`
 
-**Required** The complete path to a file that contains the parameters for a test or schedule run, If Config file is specified then no other fields will be required.
+**Optional** The complete path to a file that contains the parameters for a test or schedule run, If Config file is specified then no other fields will be required.
 
-### `swapdatasets`
+### `swapDatasets`
 
-Use this option to replace dataset values during a test or schedule run. You must ensure that both original and new datasets are in the same workspace and have the same column names. You must also include the path to the dataset. For example, /project_name/ds_path/ds_filename.csv:/project_name/ds_path/new_ds_filename.csv
+**Optional** Use this option to replace dataset values during a test or schedule run. You must ensure that both original and new datasets are in the same workspace and have the same column names. You must also include the path to the dataset. For example, /project_name/ds_path/ds_filename.csv:/project_name/ds_path/new_ds_filename.csv
 
 ### `duration`
 
-Optional. You can use this argument to specify the duration of the stages in the Rate Schedule
+**Optional** You can use this argument to specify the duration of the stages in the Rate Schedule
 
-### `exportlog`
+### `exportLog`
 
-Optional. You can use this parameter to specify the file directory path to store the exported HTTP test log. You can provide multiple parameter entries when running multiple tests. You must use a colon to separate the parameter entries. For example: c:/logexport.txt:c:/secondlogexport.txt
+**Optional** You can use this parameter to specify the file directory path to store the exported HTTP test log. You can provide multiple parameter entries when running multiple tests. You must use a colon to separate the parameter entries. For example: c:/logexport.txt:c:/secondlogexport.txt
 
-### `exportstats`
+### `exportStats`
 
-The complete path to a directory in which to store exported statistical report data.
+**Optional** The complete path to a directory in which to store exported statistical report data.
 
 ### `multipleValues`
 
@@ -128,17 +128,19 @@ https://github.community/t/you-may-only-define-up-to-10-inputs-for-a-workflow-di
 https://github.com/github/docs/issues/15710
 
 Specify the below inputs in the Key=Value format.
-Ex: publish=publish_URL_val|usercomments=Value2
+    Ex: publish=publish_URL_val|usercomments=Value2
 
-## Multiplevalue inputs
+**Note that separator between the key-value pairs is '|' character.**
 
-### `exportstatshtml`
+## Supported multipleValues inputs
+
+### `exportStatsHtml`
 The complete path to a directory in which to export web analytic results. The results are exported in the specified directory. Analyze the results on a web browser without using the test workbench.
 
-### `exportstatsformat`
+### `exportStatsFormat`
 Use this field to enter one or more formats for the reports that you want to export by using a comma as a separator. The options are simple.csv, full.csv, simple.json, full.json, csv, and json. When you want to export both simple and full reports in json or csv format, you can specify json or csv as the options. The reports are saved to the location specified in the Exported Statistical Report Data File field. This field must be used in conjunction with Exported Statistical Report Data File field.
 
-### `reporthistory`
+### `reportHistory`
 Optional. Use this command when you want to view a record of all events that occurred during a test or schedule run, For example - jaeger,testlog.
 
 ### `labels`
@@ -153,10 +155,10 @@ Determines whether a results file with the same name is overwritten. The default
 ### `publish`
 Optional. You can use this option to publish test results to HCL OneTest Server. The format is: serverURL#project.name=projectName&teamspace.name=teamspaceName. Example: https://localhost:5443/#project.name=test&teamspace.name=ts1
 
-### `publish_for`
+### `publishFor`
 Optional. You can use this option to publish the test results based on the completion status of the tests, supported values are FAIL,PASS,INCONCLUSIVE,ERROR,ALL.
 
-### `publishreports`
+### `publishReports`
 Optional. You can use this option to specify the reports to be published to HCL OneTest Server. The supported values are STATS,TESTLOG.
 
 ### `rate`
@@ -165,11 +167,11 @@ Optional. You can use this argument to specify a rate that you want to achieve f
 ### `results`
 The name of the results file. The default result file is the test or schedule name with a time stamp appended.
 
-### `usercomments`
+### `userComments`
 Add text within double quotation mark to display it in the User Comments row of the report.
 
-### `varfile`
+### `varFile`
 The complete path to the XML file that contains the variable name and value pairs.
 
-### `vmargs`
+### `vmArgs`
 Java virtual machine arguments to pass in.
