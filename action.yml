@@ -13,15 +13,15 @@ inputs:
     description: 'The name of a test within the project to use. A test can be WebUI test, Compound test, Performance schedule or Accelerated Functional Test (AFT) suite, required if Config File is not specified'
     required: true
 
-  imshared:
+  imShared:
     description: 'The path to the IMShared folder in your local installation, if it is not at default location. This is where plugins and product dependencies will be located by the execution agent, required if Config File is not specified'
     required: false
 
-  configfile:
+  configFile:
     description: 'Use this option to specify the complete path to a file that contains the parameters for a test run'
     required: false
   
-  swapdatasets:
+  swapDatasets:
     description: Use this option to replace dataset values during a test or schedule run. You must ensure that both original and new datasets are in the same workspace and have the same column names. You must also include the path to the dataset.'
     required: false
   
@@ -29,11 +29,11 @@ inputs:
     description: 'You can use this argument to specify the duration of the stages in the Rate Schedule'
     required: false
 
-  exportlog:
+  exportLog:
     description: 'You can use this parameter to specify the file directory path to store the exported HTTP test log.'
     required: false
 
-  exportstats:
+  exportStats:
     description: 'Use this option to export reports in comma-separated values (CSV) format'
     required: false
  
