@@ -2,17 +2,14 @@
 
 This action enables you to run HCL OneTest Performace tests.
 
-## How this works
-
-You can use the HCL OneTest Performance Action that enables you to select any type of test created in HCL OneTest™ that you can add to the job in the GitHub action.
-
 ## Pre requisites
 
 1. Create a github repository
-2. Create a folder named ".github" in the root of the repository
-3. Create a folder named "workflows" inside the ".github" folder.
-5. Create a .yml file with any name , inside the "workflow" folder and you need to code as following example in that yml file
-## Example usage
+2. Create a folder named ".github/workflows" in the root of the repository
+3. Create a .yml file with any name inside the ".github/workflows" folder
+4. You need to add code in yml file as detailed in example below.
+
+## Example
 
 ```yaml
 name: HCL OneTest Performance
@@ -53,12 +50,12 @@ on:
 
 jobs:
 
-    WebUI-Action:
+    Performace-Action:
         runs-on: self-hosted
         name: HCL OneTest Performance
         steps:
-         - name: HCL OneTest Performances
-           uses: SonaHJ/RPTAction@main
+         - name: HCL OneTest Performance
+           uses: SonaHJ/PerformanceAction@main
            with:
             workspace: '${{ github.event.inputs.workspace }}'
             project: '${{ github.event.inputs.project }}'
